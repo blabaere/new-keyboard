@@ -1,0 +1,5 @@
+# How to build and upload the NISSE keyboard driver.
+
+This guide explains how to build and upload the nisse keyboard driver, assuming you're on linux.
+
+Download and run as root [the MPLAB XC8 v1.34 installer](http://ww1.microchip.com/downloads/en/DeviceDoc/xc8-v1.34-full-install-linux-installer.run)
