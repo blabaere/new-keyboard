@@ -1,4 +1,6 @@
-This fork of [Esrille New Keyboard](https://github.com/esrille/new-keyboard) aims at replacing the Dvorak, Colemak and Japanese original layouts by european keyboards layouts.
+This fork of [Esrille New Keyboard](https://github.com/esrille/new-keyboard) aims at replacing the Dvorak, Colemak and Japanese original layouts by european keyboards layouts.  
+
+
 The following layouts are planned:
  - Azerty
  - Bépo
