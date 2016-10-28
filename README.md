@@ -22,7 +22,6 @@ Azerty base layer:
 |  ¨^  |  $£  |   A  |   Z  |   E  |   R  |   T  |  ESC | MENU |   Y  |   U  |   I  |   O  |   P  |  °)] |  +=} |
 |  ²~  |  Del |   Q  |   S  |   D  |   F  |   G  |  TAB | ENTR |   H  |   J  |   K  |   L  |   M  |  %ù  |  µ*  |
 |      | Ctrl |   W  |   X  |   C  |   V  |   B  |      |      |   N  |  ?,  |  .;  |  /:  |  §!  | Ctrl |      |
-|      |      |  WIN |  FN  |  MAJ |   <- |  ALT |      |      | ALTGR| SPACE|  MAJ |  FN  |  WIN |      |      |
-  
+|      |      |  WIN |  FN  |  MAJ |   <- |  ALT |      |      | AltGr| Space|  MAJ |  FN  |  WIN |      |      |
   
 Azerty FN layer modified keys (VS original FN layer)
