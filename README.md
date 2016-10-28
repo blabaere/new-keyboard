@@ -23,4 +23,40 @@ Azerty base layer:
 |     |     | WIN | FN  | MAJ | <-  | ALT |     |     |AltGr|Space| MAJ | FN  | WIN |     |     |
 ```
 
-Azerty FN layer modified keys (VS original FN layer)
+Azerty FN layer
+
+Original
+```
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     | Del |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     | F14 |     |     | F13 |     |     |     |     |     |     |
+|     |     | WIN | FN  | MAJ | <-  | ALT |     |     |AltGr|Space| MAJ | FN  | WIN |     |     |
+```
+
+Current
+```
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     | CAPS|     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|     |     |     |     |     |     |  <  |     |     |  >  |     |     |     |     |     |     |
+|     |     | WIN | FN  | MAJ | <-  | ALT |     |     |AltGr|Space| MAJ | FN  | WIN |     |     |
+```
+
+Proposed changes, base layer:
+ - Swap 'Del' and 'Menu', putting 'Del' closer to the center and under the right index.
+
+Proposed changes, FN layer:
+ - move 'Ctrl + Del' to the same key as 'Del', if it is moved in the base layer
+ - put '<' and '>' somewhere else (like ²~), possibly on the same key (like on the regular Azerty).
+ - use 'FN + 6' as Ctrl + Shift + Home
+ - use 'FN + 0' as Ctrl + Shift + End
+ - use 'FN + N' as Shift + Home
+ - use 'FN + B' as Ctrl + B, or Ctrl + Shift + B
+ - use 'FN + Del' for something ?
+ - replace 'Pause' with something actually useful ?
+ - replace 'Scroll Lock' with something actually useful ?
+ - replace 'Ctrl + Shift + Z' with something actually useful ?
+ - put 'Insert' somewhere else ? maybe even on the base layer ? (used with Resharper for 'Alt+Ins', Mintty for 'Ctrl+Ins' and 'Shift+Ins')
