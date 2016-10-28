@@ -14,7 +14,7 @@ A few other modifications regarding the non-alphanumeric keys are also planned:
  - Find a way to perform a Ctrl+Alt+Shift+arrow combo (used to move things around in Resharper, Notepad++)
 
 Azerty base layer:
-
+```
 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |      |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |      |
@@ -23,5 +23,6 @@ Azerty base layer:
 |  ²~  |  Del |   Q  |   S  |   D  |   F  |   G  |  TAB | ENTR |   H  |   J  |   K  |   L  |   M  |  %ù  |  µ*  |
 |      | Ctrl |   W  |   X  |   C  |   V  |   B  |      |      |   N  |  ?,  |  .;  |  /:  |  §!  | Ctrl |      |
 |      |      |  WIN |  FN  |  MAJ |   <- |  ALT |      |      | AltGr| Space|  MAJ |  FN  |  WIN |      |      |
+```
   
 Azerty FN layer modified keys (VS original FN layer)
