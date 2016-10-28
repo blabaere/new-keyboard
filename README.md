@@ -15,14 +15,12 @@ A few other modifications regarding the non-alphanumeric keys are also planned:
 
 Azerty base layer:
 ```
-|     |      |      |      |      |      |      |      |      |      |      |      |      |      |      |     |
-|:---:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:---:|
-|     |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |      |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |     |
-|     |      |  1&  |  2é~ |  3"# |  4'{ |  5([ |      |      |  6-| |  7è  |  8_\ |  9ç^ |  0à@ |      |     |
-| ¨^  |  $£  |   A  |   Z  |   E  |   R  |   T  |  ESC | MENU |   Y  |   U  |   I  |   O  |   P  |  °)] | +=} |
-| ²~  |  Del |   Q  |   S  |   D  |   F  |   G  |  TAB | ENTR |   H  |   J  |   K  |   L  |   M  |  %ù  | µ*  |
-|     | Ctrl |   W  |   X  |   C  |   V  |   B  |      |      |   N  |  ?,  |  .;  |  /:  |  §!  | Ctrl |     |
-|     |      |  WIN |  FN  |  MAJ |   <- |  ALT |      |      | AltGr| Space|  MAJ |  FN  |  WIN |      |     |
+|     | F1  | F2  | F3  | F4  | F5  | F6  |     |     | F7  | F8  | F9  | F10 | F11 | F12 |     |
+|     |     | 1&  | 2é~ | 3"# | 4'{ | 5([ |     |     | 6-| | 7è  | 8_\ | 9ç^ | 0à@ |     |     |
+| ¨^  | $£  |  A  |  Z  |  E  |  R  |  T  | ESC |MENU |  Y  |  U  |  I  |  O  |  P  | °)] | +=} |
+| ²~  | Del |  Q  |  S  |  D  |  F  |  G  | TAB |ENTR |  H  |  J  |  K  |  L  |  M  | %ù  | µ*  |
+|     |Ctrl |  W  |  X  |  C  |  V  |  B  |     |     |  N  | ?,  | .;  | /:  | §!  |Ctrl |     |
+|     |     | WIN | FN  | MAJ | <-  | ALT |     |     |AltGr|Space| MAJ | FN  | WIN |     |     |
 ```
 
 Azerty FN layer modified keys (VS original FN layer)
