@@ -151,7 +151,6 @@ int8_t processKeysBase(const uint8_t* current, const uint8_t* processed, uint8_t
             uint8_t key = getKeyNumLock(code);
             if (!key)
                 key = getKeyBase(code);
-            key = toggleKanaMode(key, modifiers, !memchr(processed + 2, key, 6));
             report[count++] = key;
         }
     }

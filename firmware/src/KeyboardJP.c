@@ -558,7 +558,6 @@ static int8_t processKana(const uint8_t* current, const uint8_t* processed, uint
         if (!roma || !a[0]) {
             key = getKeyBase(code);
             if (key) {
-                key = toggleKanaMode(key, current[0], !memchr(processed + 2, key, 6));
                 report[count++] = key;
                 memset(last, 0, 3);
                 lastMod = current[0];
@@ -626,28 +625,4 @@ static int8_t processKana(const uint8_t* current, const uint8_t* processed, uint
 int8_t isKanaMode(const uint8_t* current)
 {
     return kana_led && !(current[0] & (MOD_ALT | MOD_CONTROL | MOD_GUI)) && !(current[1] & (MOD_FN | MOD_PAD)) && mode != KANA_ROMAJI && (!eisuu_mode || !is109());
-}
-
-uint8_t toggleKanaMode(uint8_t key, uint8_t mod, int8_t make)
-{
-    switch (key) {
-    case KEY_LANG1:
-        kana_led = 1;
-        break;
-    case KEY_LANG2:
-        kana_led = 0;
-        prefix = 0;
-        break;
-    case KEY_CAPS_LOCK:
-        if (make && isJP())
-            eisuu_mode ^= 1;
-        break;
-    case KEY_0:
-        if ((mod & MOD_SHIFT) && isJP())
-            key = KEY_INTERNATIONAL1;
-        break;
-    default:
-        break;
-    }
-    return key;
 }

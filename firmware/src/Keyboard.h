@@ -596,7 +596,7 @@ int8_t makeReport(uint8_t* report);
 uint8_t processModKey(uint8_t key);
 
 int8_t isKanaMode(const uint8_t* current);
-uint8_t toggleKanaMode(uint8_t key, uint8_t mod, int8_t make);
+// uint8_t toggleKanaMode(uint8_t key, uint8_t mod, int8_t make);
 
 int8_t processKeysBase(const uint8_t* current, const uint8_t* processed, uint8_t* report);
 // int8_t processKeysKana(const uint8_t* current, const uint8_t* processed, uint8_t* report);

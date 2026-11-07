@@ -582,7 +582,6 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
                     break;
 #endif
                 default:
-                    key = toggleKanaMode(key, current[0], make);
                     report[count++] = key;
                     break;
                 }
