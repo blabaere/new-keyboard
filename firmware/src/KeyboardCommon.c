@@ -432,8 +432,8 @@ static void about(void)
     emitIMEName();
 
     // F8 LED
-    emitString(about9);
-    emitLEDName();
+    // emitString(about9);
+    // emitLEDName();
 
     // F9 Prefix Shift
     emitString(about10);

@@ -397,18 +397,13 @@ void initKeyboardKana(void)
         ime = 0;
 }
 
-void emitLEDName(void)
-{
-    emitStringN(ledKeyNames[led], MAX_LED_KEY_NAME);
-}
-
 void switchLED(void)
 {
     ++led;
     if (LED_MAX < led)
         led = 0;
     eeprom_write(EEPROM_LED, led);
-    emitLEDName();
+    // emitLEDName();
 }
 
 void emitIMEName(void)
