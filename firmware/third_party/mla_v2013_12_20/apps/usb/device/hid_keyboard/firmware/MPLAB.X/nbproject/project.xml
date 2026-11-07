@@ -11,6 +11,27 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <asminc-extensions/>
             <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>../src</sourceRootElem>
+                <sourceRootElem>../../../../../../bsp</sourceRootElem>
+                <sourceRootElem>../../../../../../framework/usb</sourceRootElem>
+                <sourceRootElem>../../../bootloaders/pic24_dspic/firmware/src/linker</sourceRootElem>
+                <sourceRootElem>../../../bootloaders/firmware/pic24_dspic/src/linker</sourceRootElem>
+                <sourceRootElem>../../../../../../../../src</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>Esrille_New_Keyboard</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>Esrille_New_Keyboard_with_Mouse</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
         </data>
     </configuration>
 </project>

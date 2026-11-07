@@ -1,0 +1,14 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+# Esrille_New_Keyboard configuration
+CND_ARTIFACT_DIR_Esrille_New_Keyboard=dist/Esrille_New_Keyboard/production
+CND_ARTIFACT_NAME_Esrille_New_Keyboard=MPLAB.X.production.hex
+CND_ARTIFACT_PATH_Esrille_New_Keyboard=dist/Esrille_New_Keyboard/production/MPLAB.X.production.hex
+# Esrille_New_Keyboard_with_Mouse configuration
+CND_ARTIFACT_DIR_Esrille_New_Keyboard_with_Mouse=dist/Esrille_New_Keyboard_with_Mouse/production
+CND_ARTIFACT_NAME_Esrille_New_Keyboard_with_Mouse=MPLAB.X.production.hex
+CND_ARTIFACT_PATH_Esrille_New_Keyboard_with_Mouse=dist/Esrille_New_Keyboard_with_Mouse/production/MPLAB.X.production.hex
