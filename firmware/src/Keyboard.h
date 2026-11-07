@@ -529,8 +529,6 @@ int8_t isJP(void);
 #define KANA_STICKNEY   4
 #define KANA_X6004      5
 #define KANA_MAX        5
-// void emitKanaName(void);
-// void switchKana(void);
 
 #define OS_PC           0   // F13 / F14
 #define OS_MAC          1   // Kana / Eisuu
@@ -605,7 +603,7 @@ int8_t processKeysKana(const uint8_t* current, const uint8_t* processed, uint8_t
 
 uint8_t getLED(void);
 uint8_t controlLED(uint8_t report);
-uint8_t controlKanaLED(uint8_t report);
+// uint8_t controlKanaLED(uint8_t report);
 
 uint8_t getKeyNumLock(uint8_t code);
 uint8_t getKeyBase(uint8_t code);

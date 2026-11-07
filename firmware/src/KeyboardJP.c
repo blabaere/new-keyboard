@@ -27,16 +27,6 @@
 #define ENABLE_MTYPE
 #define ENABLE_STICKNEY
 
-static uint8_t const kanaKeys[KANA_MAX + 1][MAX_KANA_KEY_NAME] =
-{
-    {KEY_R, KEY_O, KEY_M, KEY_A, KEY_ENTER},
-    {KEY_N, KEY_I, KEY_C, KEY_O, KEY_ENTER},
-    {KEY_M, KEY_T, KEY_Y, KEY_P, KEY_E, KEY_ENTER},
-    {KEY_T, KEY_R, KEY_O, KEY_N, KEY_ENTER},
-    {KEY_S, KEY_T, KEY_I, KEY_C, KEY_K, KEY_ENTER},
-    {KEY_X, KEY_6, KEY_0, KEY_0, KEY_4, KEY_ENTER},
-};
-
 #define MAX_LED_KEY_NAME    4
 
 static uint8_t const ledKeyNames[LED_MAX + 1][MAX_LED_KEY_NAME] =
@@ -682,33 +672,4 @@ int8_t processKeysKana(const uint8_t* current, const uint8_t* processed, uint8_t
     default:
         return processKeysBase(current, processed, report);
     }
-}
-
-uint8_t controlKanaLED(uint8_t report)
-{
-    if (mode != KANA_ROMAJI) {
-        switch (led) {
-        case LED_LEFT:
-        case LED_CENTER:
-        case LED_RIGHT:
-            report &= ~(1u << led);
-            report |= (kana_led << led);
-            break;
-        case LED_LEFT_NUM:
-        case LED_CENTER_CAPS:
-        case LED_RIGHT_SCROLL:
-            report |= (kana_led << (led - LED_LEFT_NUM));
-            break;
-        default:
-            break;
-        }
-        if (prefix_shift == PREFIXSHIFT_LED) {
-            if (prefix & MOD_LEFTSHIFT)
-                report |= LED_NUM_LOCK;
-            if (prefix & MOD_RIGHTSHIFT)
-                report |= LED_SCROLL_LOCK;
-        }
-
-    }
-    return report;
 }

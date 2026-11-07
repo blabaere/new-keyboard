@@ -817,7 +817,6 @@ uint8_t getLED(void)
 uint8_t controlLED(uint8_t report)
 {
     led = report;
-    report = controlKanaLED(report);
 #ifdef ENABLE_MOUSE
     if (isMouseTouched())
         report |= LED_SCROLL_LOCK;
