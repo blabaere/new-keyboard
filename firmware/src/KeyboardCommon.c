@@ -530,7 +530,7 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
                     break;
                 case KEY_F8:
                     if (make) {
-                        switchLED();
+                        // switchLED();
                         xmit = XMIT_MACRO;
                     }
                     break;

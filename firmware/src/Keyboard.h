@@ -564,7 +564,7 @@ void switchDelay(void);
 #define LED_DEFAULT         LED_CENTER_CAPS
 
 // void emitLEDName(void);
-void switchLED(void);
+// void switchLED(void);
 
 #define IME_MS          0
 #define IME_ATOK        1
