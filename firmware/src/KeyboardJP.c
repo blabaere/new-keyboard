@@ -651,25 +651,3 @@ uint8_t toggleKanaMode(uint8_t key, uint8_t mod, int8_t make)
     }
     return key;
 }
-
-int8_t processKeysKana(const uint8_t* current, const uint8_t* processed, uint8_t* report)
-{
-    switch (mode) {
-    case KANA_TRON:
-        return processKana(current, processed, report, matrixTron, matrixTronLeft, matrixTronRight);
-    case KANA_NICOLA:
-        return processKana(current, processed, report, matrixNicola, matrixNicolaLeft, matrixNicolaRight);
-#ifdef ENABLE_MTYPE
-    case KANA_MTYPE:
-        return processKana(current, processed, report, matrixMtype, matrixMtypeShift, matrixMtypeShift);
-#endif
-#ifdef ENABLE_STICKNEY
-    case KANA_STICKNEY:
-        return processKana(current, processed, report, matrixStickney, matrixStickneyShift, matrixStickneyShift);
-#endif
-    case KANA_X6004:
-        return processKana(current, processed, report, matrixX6004, matrixX6004Shift, matrixX6004Shift);
-    default:
-        return processKeysBase(current, processed, report);
-    }
-}

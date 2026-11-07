@@ -589,12 +589,13 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
             }
         }
         report[0] = modifiers;
-    } else if (isKanaMode(current))
-        xmit = processKeysKana(current, processed, report);
-    else
+    } else {
         xmit = processKeysBase(current, processed, report);
+    }
+    
     if (xmit == XMIT_NORMAL || xmit == XMIT_IN_ORDER || xmit == XMIT_MACRO)
         memmove(processed, current, 8);
+    
     return xmit;
 }
 
