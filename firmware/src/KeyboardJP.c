@@ -421,20 +421,6 @@ void switchLED(void)
     emitLEDName();
 }
 
-void emitKanaName(void)
-{
-    emitStringN(kanaKeys[mode], MAX_KANA_KEY_NAME);
-}
-
-void switchKana(void)
-{
-    ++mode;
-    if (KANA_MAX < mode)
-        mode = 0;
-    eeprom_write(EEPROM_KANA, mode);
-    emitKanaName();
-}
-
 void emitIMEName(void)
 {
     emitStringN(imeKeyNames[ime], MAX_IME_KEY_NAME);

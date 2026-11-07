@@ -529,8 +529,8 @@ int8_t isJP(void);
 #define KANA_STICKNEY   4
 #define KANA_X6004      5
 #define KANA_MAX        5
-void emitKanaName(void);
-void switchKana(void);
+// void emitKanaName(void);
+// void switchKana(void);
 
 #define OS_PC           0   // F13 / F14
 #define OS_MAC          1   // Kana / Eisuu

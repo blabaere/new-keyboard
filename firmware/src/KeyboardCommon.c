@@ -416,8 +416,8 @@ static void about(void)
     emitBaseName();
 
     // F4 Kana Layout
-    emitString(about5);
-    emitKanaName();
+    // emitString(about5);
+    // emitKanaName();
 
     // F5 Delay
     emitString(about6);
@@ -506,7 +506,7 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
                     break;
                 case KEY_F4:
                     if (make) {
-                        switchKana();
+                        // switchKana();
                         xmit = XMIT_MACRO;
                     }
                     break;
