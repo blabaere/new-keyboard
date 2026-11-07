@@ -514,13 +514,18 @@ void initKeyboardKana(void);
 #define BASE_DVORAK     1
 // #define BASE_COLEMAK    2
 // #define BASE_JIS        3
-#define BASE_NICOLA_F   4
-#define BASE_MAX        4
+// #define BASE_NICOLA_F   4
+#define BASE_MAX        4 
+// don't just change it to the actual max just yet
+// it is used to initialize an array of text
+// that is then displayed via "emitBaseName" and used in "switchBase"
+
+
 void emitBaseName(void);
 void switchBase(void);
 
 int8_t isDigit(uint8_t code);
-int8_t isJP(void);
+// int8_t isJP(void);
 
 #define KANA_ROMAJI     0
 #define KANA_NICOLA     1
