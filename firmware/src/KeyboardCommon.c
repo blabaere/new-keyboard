@@ -748,14 +748,6 @@ int8_t makeReport(uint8_t* report)
         if (isMouseTouched())
             current[1] |= MOD_PAD;
 #endif
-
-        if (prefix_shift && isKanaMode(current)) {
-            current[0] |= prefix;
-            if (!(modifiersPrev & MOD_LEFTSHIFT) && (modifiers & MOD_LEFTSHIFT))
-                prefix ^= MOD_LEFTSHIFT;
-            if (!(modifiersPrev & MOD_RIGHTSHIFT) && (modifiers & MOD_RIGHTSHIFT))
-                prefix ^= MOD_RIGHTSHIFT;
-        }
         modifiersPrev = modifiers;
 
         // Copy keys that exist in both keys[prev] and keys[at] for debouncing.
