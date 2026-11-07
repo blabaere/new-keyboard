@@ -396,17 +396,3 @@ void initKeyboardKana(void)
     if (IME_MAX < ime)
         ime = 0;
 }
-
-void emitIMEName(void)
-{
-    emitStringN(imeKeyNames[ime], MAX_IME_KEY_NAME);
-}
-
-void switchIME(void)
-{
-    ++ime;
-    if (IME_MAX < ime)
-        ime = 0;
-    eeprom_write(EEPROM_IME, ime);
-    emitIMEName();
-}

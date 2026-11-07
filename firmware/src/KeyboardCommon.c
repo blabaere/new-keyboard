@@ -428,8 +428,8 @@ static void about(void)
     emitModName();
 
     // F7 IME
-    emitString(about8);
-    emitIMEName();
+    // emitString(about8);
+    // emitIMEName();
 
     // F8 LED
     // emitString(about9);
@@ -524,7 +524,7 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
                     break;
                 case KEY_F7:
                     if (make) {
-                        switchIME();
+                        // switchIME();
                         xmit = XMIT_MACRO;
                     }
                     break;

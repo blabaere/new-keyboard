@@ -571,8 +571,8 @@ void switchDelay(void);
 #define IME_GOOGLE      2
 #define IME_APPLE       3
 #define IME_MAX         3
-void emitIMEName(void);
-void switchIME(void);
+// void emitIMEName(void);
+// void switchIME(void);
 
 #define PREFIXSHIFT_OFF 0
 #define PREFIXSHIFT_ON  1
