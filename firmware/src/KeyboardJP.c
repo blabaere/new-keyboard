@@ -29,53 +29,7 @@
 
 #define MAX_LED_KEY_NAME    4
 
-static uint8_t const ledKeyNames[LED_MAX + 1][MAX_LED_KEY_NAME] =
-{
-    {KEY_L, KEY_ENTER},
-    {KEY_C, KEY_ENTER},
-    {KEY_R, KEY_ENTER},
-    {KEY_L, KEY_MINUS, KEY_N, KEY_ENTER},
-    {KEY_C, KEY_MINUS, KEY_C, KEY_ENTER},
-    {KEY_R, KEY_MINUS, KEY_S, KEY_ENTER},
-    {KEY_O, KEY_F, KEY_F, KEY_ENTER},
-};
-
 #define MAX_IME_KEY_NAME     5
-
-static uint8_t const imeKeyNames[IME_MAX + 1][MAX_IME_KEY_NAME] =
-{
-    {KEY_M, KEY_S, KEY_ENTER},
-    {KEY_A, KEY_T, KEY_O, KEY_K, KEY_ENTER},
-    {KEY_G, KEY_O, KEY_O, KEY_G, KEY_ENTER},
-    {KEY_A, KEY_P, KEY_P, KEY_L, KEY_ENTER},
-};
-
-static uint8_t const consonantSet[][2] =
-{
-    {0},
-    {KEY_K},
-    {KEY_S},
-    {KEY_T},
-    {KEY_N},
-    {KEY_H},
-    {KEY_M},
-    {KEY_Y},
-    {KEY_R},
-    {KEY_W},
-    {KEY_P},
-    {KEY_G},
-    {KEY_Z},
-    {KEY_D},
-    {KEY_B},
-    {KEY_X},
-    {KEY_X, KEY_K},
-    {KEY_X, KEY_T},
-    {KEY_X, KEY_Y},
-    {KEY_X, KEY_W},
-    {KEY_W, KEY_Y},
-    {KEY_V},
-    {KEY_L},
-};
 
 static uint8_t const vowelSet[] =
 {

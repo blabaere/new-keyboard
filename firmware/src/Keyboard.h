@@ -512,7 +512,7 @@ void initKeyboardKana(void);
 
 #define BASE_QWERTY     0
 #define BASE_DVORAK     1
-#define BASE_COLEMAK    2
+// #define BASE_COLEMAK    2
 #define BASE_JIS        3
 #define BASE_NICOLA_F   4
 #define BASE_MAX        4
@@ -563,16 +563,11 @@ void switchDelay(void);
 
 #define LED_DEFAULT         LED_CENTER_CAPS
 
-// void emitLEDName(void);
-// void switchLED(void);
-
 #define IME_MS          0
 #define IME_ATOK        1
 #define IME_GOOGLE      2
 #define IME_APPLE       3
 #define IME_MAX         3
-// void emitIMEName(void);
-// void switchIME(void);
 
 #define PREFIXSHIFT_OFF 0
 #define PREFIXSHIFT_ON  1
