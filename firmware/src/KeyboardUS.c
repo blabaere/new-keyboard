@@ -72,18 +72,6 @@ static uint8_t const matrixDvorak[8][12] =
 // zenkaku      KEY_GRAVE_ACCENT
 //
 
-static uint8_t const matrixJIS[8][12] =
-{
-    KEY_RIGHT_BRACKET, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_EQUAL,
-    KEY_INTERNATIONAL3, KEY_F1, 0, 0, 0, 0, 0, 0, 0, 0, KEY_F12, KEY_LEFT_BRACKET,
-    KEY_NON_US_HASH, KEY_1, 0, 0, 0, 0, 0, 0, 0, 0, KEY_0, KEY_MINUS,
-    KEY_CAPS_LOCK, KEY_2, KEY_3, KEY_4, KEY_5, 0, 0, KEY_6, KEY_7, KEY_8, KEY_9, KEY_QUOTE,
-    KEY_Q, KEY_W, KEY_E, KEY_R, KEY_T, 0, 0, KEY_Y, KEY_U, KEY_I, KEY_O, KEY_P,
-    KEY_A, KEY_S, KEY_D, KEY_F, KEY_G, KEY_ESCAPE, KEY_APPLICATION, KEY_H, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON,
-    KEY_Z, KEY_X, KEY_C, KEY_V, KEY_B, KEY_TAB, KEY_ENTER, KEY_N, KEY_M, KEY_COMMA, KEY_PERIOD, KEY_SLASH,
-    KEY_LEFTCONTROL, KEY_LEFT_GUI, KEY_FN, KEY_LEFTSHIFT, KEY_BACKSPACE, KEY_LEFTALT, KEY_RIGHTALT, KEY_SPACEBAR, KEY_RIGHTSHIFT, KEY_FN, KEY_RIGHT_GUI, KEY_RIGHTCONTROL
-};
-
 static uint8_t const matrixNicolaF[8][12] =
 {
     KEY_RIGHT_BRACKET, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_MINUS,
@@ -126,7 +114,7 @@ int8_t isDigit(uint8_t code)
 
 int8_t isJP(void)
 {
-    return mode == BASE_JIS || mode == BASE_NICOLA_F;
+    return mode == BASE_NICOLA_F;
 }
 
 int8_t processKeysBase(const uint8_t* current, const uint8_t* processed, uint8_t* report)
@@ -163,9 +151,9 @@ uint8_t getKeyBase(uint8_t code)
 //    case BASE_COLEMAK:
 //        key = matrixColemak[row][column];
 //        break;
-    case BASE_JIS:
-        key = matrixJIS[row][column];
-        break;
+//    case BASE_JIS:
+//        key = matrixJIS[row][column];
+//        break;
     case BASE_NICOLA_F:
         key = matrixNicolaF[row][column];
         break;
