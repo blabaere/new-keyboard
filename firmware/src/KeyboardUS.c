@@ -24,11 +24,9 @@
 
 static uint8_t const baseKeys[BASE_MAX + 1][5] =
 {
-    {KEY_U, KEY_S, KEY_ENTER},
-    {KEY_U, KEY_S, KEY_MINUS, KEY_D, KEY_ENTER},
-    {KEY_U, KEY_S, KEY_MINUS, KEY_C, KEY_ENTER},
-    {KEY_J, KEY_P, KEY_ENTER},
-    {KEY_J, KEY_P, KEY_MINUS, KEY_N, KEY_ENTER},
+    {KEY_U, KEY_S, KEY_ENTER},                   // Qwerty
+    {KEY_E, KEY_R, KEY_MINUS, KEY_A, KEY_ENTER}, // Ergol azerty
+    {KEY_U, KEY_S, KEY_MINUS, KEY_D, KEY_ENTER}, // Dvorak
 };
 
 static uint8_t const matrixQwerty[8][12] =
@@ -40,6 +38,24 @@ static uint8_t const matrixQwerty[8][12] =
     KEY_Q, KEY_W, KEY_E, KEY_R, KEY_T, 0, 0, KEY_Y, KEY_U, KEY_I, KEY_O, KEY_P,
     KEY_A, KEY_S, KEY_D, KEY_F, KEY_G, KEY_ESCAPE, KEY_DELETE, KEY_H, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON,
     KEY_Z, KEY_X, KEY_C, KEY_V, KEY_B, KEY_TAB, KEY_ENTER, KEY_N, KEY_M, KEY_COMMA, KEY_PERIOD, KEY_SLASH,
+    KEY_LEFTCONTROL, KEY_LEFT_GUI, KEY_FN, KEY_LEFTSHIFT, KEY_BACKSPACE, KEY_LEFTALT, KEY_RIGHTALT, KEY_SPACEBAR, KEY_RIGHTSHIFT, KEY_FN, KEY_RIGHT_GUI, KEY_RIGHTCONTROL
+};
+
+// Keys for emulating Ergol on Azerty hosts.
+// Some positions in the grid don't match a regular Azerty key.
+// This is obviously the case for the dead key (between D and Y)
+// But it seems also true for 3 others on the bottom row (punctuation)
+// These special keys are marked by empty comments used as delimiters: /**/
+// This means the existing functions cannot simply read a position in that matrix and return the key code
+static uint8_t const matrixErgolAz[8][12] =
+{
+    KEY_LEFT_BRACKET, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_EQUAL,
+    KEY_APPLICATION, KEY_F1, 0, 0, 0, 0, 0, 0, 0, 0, KEY_F12, KEY_BACKSLASH,
+    KEY_RIGHT_BRACKET, KEY_1, 0, 0, 0, 0, 0, 0, 0, 0, KEY_0, KEY_MINUS,
+    KEY_NON_US_BACKSLASH, KEY_2, KEY_3, KEY_4, KEY_5, 0, 0, KEY_6, KEY_7, KEY_8, KEY_9, KEY_QUOTE,
+    KEY_A, KEY_C, KEY_O, KEY_P, KEY_Z, 0, 0, KEY_J, KEY_SEMICOLON, KEY_D, /**/VOID_KEY/**/, KEY_Y,
+    KEY_Q, KEY_S, KEY_E, KEY_N, KEY_F, KEY_ESCAPE, KEY_DELETE, KEY_L, KEY_R, KEY_T, KEY_I, KEY_U,
+    KEY_W, KEY_X, /**/KEY_MINUS/**/, KEY_V, KEY_B, KEY_TAB, KEY_ENTER, /**/KEY_COMMA/**/, KEY_H, KEY_G, /**/KEY_PERIOD/**/, KEY_K,
     KEY_LEFTCONTROL, KEY_LEFT_GUI, KEY_FN, KEY_LEFTSHIFT, KEY_BACKSPACE, KEY_LEFTALT, KEY_RIGHTALT, KEY_SPACEBAR, KEY_RIGHTSHIFT, KEY_FN, KEY_RIGHT_GUI, KEY_RIGHTCONTROL
 };
 
@@ -55,23 +71,8 @@ static uint8_t const matrixDvorak[8][12] =
     KEY_LEFTCONTROL, KEY_LEFT_GUI, KEY_FN, KEY_LEFTSHIFT, KEY_BACKSPACE, KEY_LEFTALT, KEY_RIGHTALT, KEY_SPACEBAR, KEY_RIGHTSHIFT, KEY_FN, KEY_RIGHT_GUI, KEY_RIGHTCONTROL
 };
 
-//
-// Japanese layouts
-//
-// [{   KEY_RIGHT_BRACKET
-// ]}   KEY_NON_US_HASH
-// \|   KEY_INTERNATIONAL3
-// @`   KEY_LEFT_BRACKET
-// -=   KEY_MINUS
-// :*   KEY_QUOTE
-// ^~   KEY_EQUAL
-//  _   KEY_INTERNATIONAL1
-// no-convert   KEY_INTERNATIONAL5
-// convert      KEY_INTERNATIONAL4
-// hiragana     KEY_INTERNATIONAL2
-// zenkaku      KEY_GRAVE_ACCENT
-//
-
+// Selected layout (Qwerty, Dvorak, Ergol etc)
+// Values are defined in the header as BASE_xxx
 static uint8_t mode;
 
 void initKeyboardBase(void)
@@ -124,25 +125,21 @@ uint8_t getKeyBase(uint8_t code)
     uint8_t column = code % 12;
     if (key)
         return key;
+    
     switch (mode) {
     case BASE_QWERTY:
         key = matrixQwerty[row][column];
         break;
+    case BASE_ERGOL_AZ:
+        key = matrixErgolAz[row][column];
+        break;
     case BASE_DVORAK:
         key = matrixDvorak[row][column];
         break;
-//    case BASE_COLEMAK:
-//        key = matrixColemak[row][column];
-//        break;
-//    case BASE_JIS:
-//        key = matrixJIS[row][column];
-//        break;
-//    case BASE_NICOLA_F:
-//        key = matrixNicolaF[row][column];
-//        break;
     default:
         key = matrixQwerty[row][column];
         break;
     }
+    
     return processModKey(key);
 }

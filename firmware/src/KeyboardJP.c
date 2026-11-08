@@ -22,14 +22,6 @@
 #include <xc.h>
 #endif
 
-#define MAX_KANA_KEY_NAME    6
-
-#define ENABLE_MTYPE
-#define ENABLE_STICKNEY
-
-#define MAX_LED_KEY_NAME    4
-
-#define MAX_IME_KEY_NAME     5
 
 // Do not remove this, it breaks the build
 static uint8_t const vowelSet[] =
@@ -42,16 +34,6 @@ static uint8_t const vowelSet[] =
     KEY_O,
     KEY_Y
 };
-
-#ifdef ENABLE_MTYPE
-
-#endif
-
-#ifdef ENABLE_STICKNEY
-#endif
-
-#ifdef ENABLE_MTYPE
-#endif
 
 static uint8_t mode;
 static uint8_t led;

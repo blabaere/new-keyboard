@@ -52,6 +52,10 @@ static uint8_t const osKeys[OS_MAX + 1][MAX_OS_KEY_NAME] =
     {KEY_S, KEY_MINUS, KEY_S, KEY_P, KEY_ENTER},
 };
 
+// TODO blabaere 2026/11/08: this "mod" feature allows changing the modifier keys layout
+// Scrolling through the various "mod" is done with the FN+F6 keyboard shortcut.
+// I don't have a use for it, so it should probably be removed.
+
 #define MAX_MOD             5
 #define MAX_MOD_KEY_NAME    6
 #define MAX_MOD_KEYS        7

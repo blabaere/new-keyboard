@@ -511,11 +511,9 @@ void initKeyboardKana(void);
 #define MOD_PAD         4u      // Touch sensor
 
 #define BASE_QWERTY     0
-#define BASE_DVORAK     1
-// #define BASE_COLEMAK    2
-// #define BASE_JIS        3
-// #define BASE_NICOLA_F   4
-#define BASE_MAX        4 
+#define BASE_ERGOL_AZ   1
+#define BASE_DVORAK     2
+#define BASE_MAX        2
 // don't just change it to the actual max just yet
 // it is used to initialize an array of text
 // that is then displayed via "emitBaseName" and used in "switchBase"
