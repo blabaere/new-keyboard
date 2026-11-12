@@ -59,6 +59,52 @@ static uint8_t const matrixErgolAz[8][12] =
     KEY_LEFTCONTROL, KEY_LEFT_GUI, KEY_FN, KEY_LEFTSHIFT, KEY_BACKSPACE, KEY_LEFTALT, KEY_RIGHTALT, KEY_SPACEBAR, KEY_RIGHTSHIFT, KEY_FN, KEY_RIGHT_GUI, KEY_RIGHTCONTROL
 };
 
+// IT SEEMS LIKE THE SHIFT MODIFIER WILL NEED SOME SPECIAL HANDLING TOO
+// Otherwise, how is "Shift + 1" supposed to result in "€" ?
+
+// What is needed here is not a single key code per cell but a key combination
+// for example where 'à' is expected, there should be something that would generate the sequence Alt + 0,2,2,4
+// But some cells should be empty, or maybe a regular key code
+// All symbols in CP-1252 are combinations starting with Alt + 0,1 or Alt + 0,2
+static uint8_t const matrix_ergol_az_dead_key[8][12][3] = 
+{
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0      }, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0      }, {0      }, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0      }, {0      }, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+};
+
+// here '⁰' means "not mapped" and '₀' means "special case"
+/* 
+ * 1 2 3 4 5 6 7 8 9 0
+ * „ “ ” ¢ ‰ ⁰ ⁰ § ¶ °
+ * 
+ * Q C O P W J M D ! Y
+ * â ç œ ô ⁰ ⁰ µ _ ₀ û
+ * 
+ * A S E N F L R T I U
+ * à é è ê ñ ( ) î ï ù
+ * 
+ * Z X - V B . H G , K
+ * æ ß ‑ – — … ⁰ ⁰ · ⁰
+ */
+
+// one more layer for dead key followed by shift+key
+
+// There should be a layer for double dead key
+// For DK, P -> ô, but DK, DK, O -> ö
+
+// and of course, yet another layer for double dead key followed by shift+key
+
+// There has to be another layer for AltGr for symbols (math and programming)
+// This one will definitely have regular keys and some combinations 
+
+// And if there is some room left: AltGr+Shift. Not much here except × ≠ ÷ ≤ ≥ ±
+
 static uint8_t const matrixDvorak[8][12] =
 {
     KEY_LEFT_BRACKET, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_BACKSLASH,
