@@ -31,7 +31,7 @@
 #include "nisse.h"
 #endif
 
-__EEPROM_DATA(BASE_QWERTY, KANA_ROMAJI, OS_PC, 1 /* delay */, 0 /* mod */, LED_DEFAULT, IME_MS, 0 /* mouse */);
+__EEPROM_DATA(BASE_QWERTY, KANA_ERGOL_OFF, OS_PC, 1 /* delay */, 0 /* mod */, LED_DEFAULT, IME_MS, 0 /* mouse */);
 
 uint8_t os;
 uint8_t mod;
@@ -415,13 +415,13 @@ static void about(void)
     emitString(about3);
     emitOSName();
 
-    // F3 Layout
+    // F3 US Layout
     emitString(about4);
     emitBaseName();
 
-    // F4 Kana Layout
-    // emitString(about5);
-    // emitKanaName();
+    // F4 Ergol Layout
+    emitString(about5);
+    emit_ergol_name();
 
     // F5 Delay
     emitString(about6);
@@ -502,7 +502,7 @@ static int8_t processKeysFn(const uint8_t* current, uint8_t* processed, uint8_t*
                 break;
             case KEY_F4:
                 if (make) {
-                    // switchKana();
+                    switch_ergol();
                     xmit = XMIT_MACRO;
                 }
                 break;
@@ -597,6 +597,8 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
     memset(report, 0, 8);
     if (current[1] & MOD_FN) {
         xmit = processKeysFn(current, processed, report);
+    } else if (is_ergol_mode(current)) {
+        xmit = process_keys_ergol(current, processed, report);
     } else {
         xmit = processKeysBase(current, processed, report);
     }
