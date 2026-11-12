@@ -470,6 +470,128 @@ static const uint8_t* getKeyFn(uint8_t code)
     return matrixFn[code / 12][code % 12];
 }
 
+static int8_t processKeysFn(const uint8_t* current, uint8_t* processed, uint8_t* report)
+{
+    int8_t xmit;
+
+    uint8_t modifiers = current[0];
+    uint8_t count = 2;
+    xmit = XMIT_NORMAL;
+    for (int8_t i = 2; i < 8 && xmit != XMIT_MACRO; ++i) {
+        uint8_t code = current[i];
+        const uint8_t* a = getKeyFn(code);
+        for (int8_t j = 0; j < 3 && count < 8; ++j) {
+            uint8_t key = a[j];
+            int8_t make = !memchr(processed + 2, code, 6);
+            switch (key) {
+            case 0:
+                break;
+            case KEY_F1:
+                if (make) {
+                    about();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F2:
+                if (make) {
+                    switchOS();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F3:
+                if (make) {
+                    switchBase();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F4:
+                if (make) {
+                    // switchKana();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F5:
+                if (make) {
+                    switchDelay();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F6:
+                if (make) {
+                    switchMod();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F7:
+                if (make) {
+                    // switchIME();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F8:
+                if (make) {
+                    // switchLED();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_F9:
+                if (make) {
+                    switchPrefixShift();
+                    xmit = XMIT_MACRO;
+                }
+                break;
+            case KEY_LEFTCONTROL:
+                modifiers |= MOD_LEFTCONTROL;
+                break;
+            case KEY_RIGHTCONTROL:
+                modifiers |= MOD_RIGHTCONTROL;
+                break;
+            case KEY_LEFTSHIFT:
+                modifiers |= MOD_LEFTSHIFT;
+                break;
+            case KEY_RIGHTSHIFT:
+                modifiers |= MOD_RIGHTSHIFT;
+                break;
+#ifdef NRF51
+            case KEY_ESCAPE:
+                if (make) {
+                    set_event(BSP_EVENT_DISCONNECT);
+                    xmit = XMIT_BRK;
+                }
+                break;
+            case KEY_1:
+                if (make) {
+                    set_event(BSP_EVENT_KEY_1);
+                    modifiers &= ~MOD_LEFTCONTROL;
+                    xmit = XMIT_BRK;
+                }
+                break;
+            case KEY_2:
+                if (make) {
+                    set_event(BSP_EVENT_KEY_2);
+                    modifiers &= ~MOD_LEFTCONTROL;
+                    xmit = XMIT_BRK;
+                }
+                break;
+            case KEY_3:
+                if (make) {
+                    set_event(BSP_EVENT_KEY_3);
+                    modifiers &= ~MOD_LEFTCONTROL;
+                    xmit = XMIT_BRK;
+                }
+                break;
+#endif
+            default:
+                report[count++] = key;
+                break;
+            }
+        }
+    }
+    report[0] = modifiers;
+
+    return xmit;
+}
+
 static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* report)
 {
     int8_t xmit;
@@ -478,120 +600,7 @@ static int8_t processKeys(const uint8_t* current, uint8_t* processed, uint8_t* r
         return XMIT_NONE;
     memset(report, 0, 8);
     if (current[1] & MOD_FN) {
-        uint8_t modifiers = current[0];
-        uint8_t count = 2;
-        xmit = XMIT_NORMAL;
-        for (int8_t i = 2; i < 8 && xmit != XMIT_MACRO; ++i) {
-            uint8_t code = current[i];
-            const uint8_t* a = getKeyFn(code);
-            for (int8_t j = 0; j < 3 && count < 8; ++j) {
-                uint8_t key = a[j];
-                int8_t make = !memchr(processed + 2, code, 6);
-                switch (key) {
-                case 0:
-                    break;
-                case KEY_F1:
-                    if (make) {
-                        about();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F2:
-                    if (make) {
-                        switchOS();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F3:
-                    if (make) {
-                        switchBase();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F4:
-                    if (make) {
-                        // switchKana();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F5:
-                    if (make) {
-                        switchDelay();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F6:
-                    if (make) {
-                        switchMod();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F7:
-                    if (make) {
-                        // switchIME();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F8:
-                    if (make) {
-                        // switchLED();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_F9:
-                    if (make) {
-                        switchPrefixShift();
-                        xmit = XMIT_MACRO;
-                    }
-                    break;
-                case KEY_LEFTCONTROL:
-                    modifiers |= MOD_LEFTCONTROL;
-                    break;
-                case KEY_RIGHTCONTROL:
-                    modifiers |= MOD_RIGHTCONTROL;
-                    break;
-                case KEY_LEFTSHIFT:
-                    modifiers |= MOD_LEFTSHIFT;
-                    break;
-                case KEY_RIGHTSHIFT:
-                    modifiers |= MOD_RIGHTSHIFT;
-                    break;
-#ifdef NRF51
-                case KEY_ESCAPE:
-                    if (make) {
-                        set_event(BSP_EVENT_DISCONNECT);
-                        xmit = XMIT_BRK;
-                    }
-                    break;
-                case KEY_1:
-                    if (make) {
-                        set_event(BSP_EVENT_KEY_1);
-                        modifiers &= ~MOD_LEFTCONTROL;
-                        xmit = XMIT_BRK;
-                    }
-                    break;
-                case KEY_2:
-                    if (make) {
-                        set_event(BSP_EVENT_KEY_2);
-                        modifiers &= ~MOD_LEFTCONTROL;
-                        xmit = XMIT_BRK;
-                    }
-                    break;
-                case KEY_3:
-                    if (make) {
-                        set_event(BSP_EVENT_KEY_3);
-                        modifiers &= ~MOD_LEFTCONTROL;
-                        xmit = XMIT_BRK;
-                    }
-                    break;
-#endif
-                default:
-                    report[count++] = key;
-                    break;
-                }
-            }
-        }
-        report[0] = modifiers;
+        xmit = processKeysFn(current, processed, report);
     } else {
         xmit = processKeysBase(current, processed, report);
     }
