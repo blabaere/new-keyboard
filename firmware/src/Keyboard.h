@@ -545,8 +545,6 @@ int8_t isDigit(uint8_t code);
 void emitOSName(void);
 void switchOS(void);
 
-#define is109()     (os == OS_109A || os == OS_109B)
-
 void emitModName(void);
 void switchMod(void);
 

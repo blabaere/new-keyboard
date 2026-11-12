@@ -463,10 +463,6 @@ static void about(void)
 
 static const uint8_t* getKeyFn(uint8_t code)
 {
-    if (is109()) {
-        if (12 * 6 + 8 <= code && code <= 12 * 6 + 11)
-            return matrixFn109[code - (12 * 6 + 8)];
-    }
     return matrixFn[code / 12][code % 12];
 }
 
